@@ -1,1 +1,1 @@
-{"$schema": "https://openapi.vercel.sh/vercel.json", "rewrites": [{"destination": {"service": "server"}, "source": "/api/(.*)"}, {"destination": {"service": "client"}, "source": "/(.*)"}], "services": {"client": {"framework": "vite", "root": "client"}, "server": {"root": "server", "buildCommand": "npm install && npm run build"}}}
+{"$schema":"https://openapi.vercel.sh/vercel.json","rewrites":[{"destination":"/api/index","source":"/api/(.*)"},{"destination":{"service":"client"},"source":"/(.*)"}],"services":{"client":{"framework":"vite","root":"client"}}}
