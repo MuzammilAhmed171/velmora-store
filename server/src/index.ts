@@ -71,9 +71,11 @@ app.use((err: any, _req: express.Request, res: express.Response, _next: express.
 
 export default app;
 
-// Long-running server mode (local dev / Render / VPS). On Vercel the
-// serverless function in /api imports `app` directly and never calls listen().
-if (!process.env.VERCEL) {
+// Listen when run directly (node dist/index.js) — used by Vercel Services,
+// Render, VPS, and local dev. When imported as a module (e.g. Vercel
+// serverless via api/index.ts), the importer handles incoming requests.
+const isMainModule = typeof require !== "undefined" && require.main === module;
+if (isMainModule) {
   connectDB()
     .then(() => app.listen(PORT, () => console.log(`Velmora API on http://localhost:${PORT}`)))
     .catch((e) => {
