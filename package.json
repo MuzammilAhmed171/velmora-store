@@ -1,20 +1,36 @@
 {
-  "description": "Velmora ecommerce app \u2014 React storefront (client/) + Express API (server/). Run 'npm run setup' first.",
-  "devDependencies": {
-    "concurrently": "^9.1.0"
-  },
   "name": "velmora",
-  "private": true,
-  "scripts": {
-    "dev": "concurrently -n api,web -c blue,green \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
-    "install:all": "npm install --prefix server && npm install --prefix client",
-    "setup": "node scripts/setup.cjs"
-  },
   "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Velmora ecommerce app \u2014 React storefront + Express API. Run 'npm run setup' first.",
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,green \"npm run dev --prefix server\" \"vite\"",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "setup": "node scripts/setup.cjs",
+    "install:all": "npm install && npm install --prefix server"
+  },
   "dependencies": {
+    "framer-motion": "^11.15.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.2",
     "mongoose": "^8.9.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.17",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
+    "concurrently": "^9.1.0"
   }
 }

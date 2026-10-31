@@ -9,7 +9,7 @@ const { execSync, spawnSync } = require("child_process");
 
 const ROOT = path.resolve(__dirname, "..");
 const SERVER_ENV = path.join(ROOT, "server", ".env");
-const CLIENT_ENV = path.join(ROOT, "client", ".env");
+const CLIENT_ENV = path.join(ROOT, ".env");
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 const ask = (q) => new Promise((resolve) => rl.question(q, (a) => resolve(a.trim())));
@@ -93,7 +93,7 @@ async function main() {
     stripe ? "STRIPE_SECRET_KEY=" + stripe : "# STRIPE_SECRET_KEY=sk_test_...  (paste your Stripe test key here later)",
   ]);
   writeEnv(CLIENT_ENV, ["VITE_API_URL=http://localhost:4000"]);
-  ok("Config files written (server/.env and client/.env).");
+  ok("Config files written (server/.env and .env).");
 
   // Seed
   const seedAns = await ask("\nLoad the demo store data (157 products, coupons, etc.)? [Y/n]:\n> ");
