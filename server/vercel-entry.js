@@ -1,4 +1,6 @@
 // Vercel Services entrypoint (exists in git, so validation passes).
-// At runtime, dist/ exists (created by buildCommand), load the compiled server.
-process.env.VELMORA_SERVICE_MODE = "1";
-module.exports = require("./dist/index.js");
+// Exports the Express app as a request handler (no app.listen in this mode;
+// the per-request connectDB middleware keeps MongoDB alive).
+const mod = require("./dist/index.js");
+const app = mod.default || mod;
+module.exports = (req, res) => app(req, res);

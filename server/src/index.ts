@@ -71,12 +71,11 @@ app.use((err: any, _req: express.Request, res: express.Response, _next: express.
 
 export default app;
 
-// Listen when run directly (node dist/index.js) — used by Vercel Services,
-// Render, VPS, and local dev. When imported as a module (e.g. Vercel
-// serverless via api/index.ts), the importer handles incoming requests.
+// Listen when run directly (node dist/index.js) — used by Render, VPS, and
+// local dev. When imported as a module (Vercel Services entrypoint or
+// serverless function), the importer handles incoming requests.
 const isMainModule = typeof require !== "undefined" && require.main === module;
-const isVercelService = process.env.VELMORA_SERVICE_MODE === "1";
-if (isMainModule || isVercelService) {
+if (isMainModule) {
   connectDB()
     .then(() => app.listen(PORT, () => console.log(`Velmora API on http://localhost:${PORT}`)))
     .catch((e) => {
