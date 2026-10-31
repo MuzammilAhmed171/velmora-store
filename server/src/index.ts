@@ -75,7 +75,8 @@ export default app;
 // Render, VPS, and local dev. When imported as a module (e.g. Vercel
 // serverless via api/index.ts), the importer handles incoming requests.
 const isMainModule = typeof require !== "undefined" && require.main === module;
-if (isMainModule) {
+const isVercelService = process.env.VELMORA_SERVICE_MODE === "1";
+if (isMainModule || isVercelService) {
   connectDB()
     .then(() => app.listen(PORT, () => console.log(`Velmora API on http://localhost:${PORT}`)))
     .catch((e) => {
