@@ -1,0 +1,16 @@
+VELMORA SHOPPING GUIDE (Demo Digital Download)
+============================================
+
+Thank you for your purchase! This is a demo digital product included
+with the Velmora starter package.
+
+In a real store, this file would be your e-book, software license,
+design template, or course material.
+
+How digital downloads work in Velmora:
+- After a customer buys a digital product, they get a secure,
+  limited-use download link in their account (My Account > Downloads).
+- Each link has a download limit set by the store admin.
+- Admins upload files in Admin > Products by marking a product as digital.
+
+Replace this file with your own digital products when you go live.
